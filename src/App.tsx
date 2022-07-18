@@ -1,23 +1,33 @@
 import { useState, useEffect } from 'react'
-import { w3cwebsocket as W3CWebSocket } from 'websocket';
-
 import FloorPlan from './components/FloorPlan/FloorPlan';
 
+function App({ client }: any) {
 
-
-
-function App() {
-
-  const client = new W3CWebSocket('ws://localhost:8000')
   const [connected, setConnected] = useState<Boolean>(false)
   const [iotDevices, setIotDevices] = useState<Array<IotDevice>>([])
+
+  // Sends Child's command passed via child-to-parent props
+  const commandHandler = (device: IotDevice, command: string) => {
+    if (command) {
+      client.send(JSON.stringify({
+        type: "message",
+        command: command,
+        name: device.name
+      }));
+    }
+  }
 
   useEffect(() => {
 
     // Connects to websocket
     client.onopen = () => {
+      console.log('Connected');
       setConnected(true)
     };
+
+    client.onerror = (error: any) => {
+      console.log(error);
+    }
 
     // If the server disconnects, forces a screen refresh to clear out all IoT devices
     client.onclose = () => {
@@ -28,14 +38,14 @@ function App() {
     client.onmessage = (message: any) => {
       let iotState = JSON.parse(message.data);
       setIotDevices(iotState)
-      console.log(iotDevices);
+      console.log(iotState);
     }
 
   }, [])
 
   return (
     <div className="App">
-      <FloorPlan iotDevices={iotDevices} />
+      <FloorPlan iotDevices={iotDevices} commandHandler={commandHandler} />
     </div>
   );
 }

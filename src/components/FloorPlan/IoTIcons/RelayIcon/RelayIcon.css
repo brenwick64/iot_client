@@ -1,0 +1,38 @@
+.relay-icon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.relay-button {
+    border: none;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 50%;
+}
+
+.relay-on {
+    background-color: rgba(168, 209, 223, 0.6);
+    box-shadow: 0px 0px 80px 40px #add8e6;
+}
+
+.relay-off {
+    background-color: transparent;
+}
+
+.relay-button:focus {
+    outline: none;
+}
+
+.relay-label {
+    position: absolute;
+    transform: translateY(25px);
+    text-align: center;
+    width: 7rem;
+    margin: 0;
+    font-size: 0.8em;
+    color: white;
+}
