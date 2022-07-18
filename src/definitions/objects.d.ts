@@ -6,3 +6,10 @@ interface IotDevice {
     type: string
     [otherAttributes: string | number | symbol]: unknown
 }
+
+interface Settings {
+    showLabels: boolean
+    showLights: boolean
+    showSensors: boolean
+    showPlants: boolean
+}

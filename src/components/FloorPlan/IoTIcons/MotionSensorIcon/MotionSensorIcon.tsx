@@ -1,15 +1,30 @@
 import './MotionSensorIcon.css'
 
 
-function MotionSensorIcon({ IotDevice, commandHandler }: IconProps) {
+function MotionSensorIcon({ IotDevice, settings, commandHandler }: IconProps) {
 
     // Guard typechecking
+    const status = typeof IotDevice.status === 'string' ? IotDevice.status : null
 
 
     return (
-        <div className="relay-icon" style={{ top: IotDevice.top, left: IotDevice.left }}>
-
-        </div>
+        <>
+            {settings['showSensors'] &&
+                <div className="motionsensor-icon" style={{ top: IotDevice.top, left: IotDevice.left }}>
+                    <div className='motion-sensor-container'>
+                        <div
+                            className={status === 'active' ? 'motion-sensor-border motion-sensor-border-active' : 'motion-sensor-border motion-sensor-border-inactive'}
+                        >
+                        </div>
+                        <div
+                            className={status === 'active' ? 'motion-sensor motion-sensor-active' : 'motion-sensor motion-sensor-inactive'}
+                            onClick={() => commandHandler(IotDevice, '')}
+                        >
+                        </div>
+                    </div>
+                    {settings['showLabels'] && <p className="relay-label">{IotDevice.name}</p>}
+                </div>}
+        </>
     )
 }
 

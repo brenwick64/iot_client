@@ -1,0 +1,28 @@
+.soilsensor-icon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.soil-sensor {
+    cursor: pointer;
+}
+
+.wet {
+    color: blue;
+}
+
+.moist {
+    color: green;
+}
+
+.damp {
+    color: green;
+}
+
+.dry {
+    color: lightsalmon;
+}
