@@ -1,0 +1,21 @@
+.checkbox {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    border-radius: 2px;
+    margin-right: 0.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid var(--color-primary);
+    background-color: #0f1219;
+}
+
+.checkbox:checked {
+    background-color: var(--color-primary);
+}
+
+.checkbox-label {
+    color: #fff;
+}

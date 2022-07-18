@@ -7,15 +7,15 @@ import MotionSensorIcon from './IoTIcons/MotionSensorIcon/MotionSensorIcon'
 import SoilSensorIcon from './IoTIcons/SoilSensorIcon/SoilSensorIcon'
 
 
-export default function FloorPlan({ settings, iotDevices, commandHandler }: FloorPlanProps) {
+export default function FloorPlan({ settings, iotDevices, commandHandler, setFocusedDeviceKey }: FloorPlanProps) {
     const renderIcon = (device: IotDevice) => {
         switch (device.type) {
             case 'relay':
-                return <RelayIcon IotDevice={device} commandHandler={commandHandler} settings={settings} key={device.name} />
+                return <RelayIcon IotDevice={device} commandHandler={commandHandler} setFocusedDeviceKey={setFocusedDeviceKey} settings={settings} key={device.name} />
             case 'motionsensor':
-                return <MotionSensorIcon IotDevice={device} commandHandler={commandHandler} settings={settings} key={device.name} />
+                return <MotionSensorIcon IotDevice={device} commandHandler={commandHandler} setFocusedDeviceKey={setFocusedDeviceKey} settings={settings} key={device.name} />
             case 'soilsensor':
-                return <SoilSensorIcon IotDevice={device} commandHandler={commandHandler} settings={settings} key={device.name} />
+                return <SoilSensorIcon IotDevice={device} commandHandler={commandHandler} setFocusedDeviceKey={setFocusedDeviceKey} settings={settings} key={device.name} />
             default:
                 return null
         }
@@ -26,7 +26,7 @@ export default function FloorPlan({ settings, iotDevices, commandHandler }: Floo
             <div className='floorplan-container'>
                 <img alt='' src={floor_plan} />
                 {iotDevices.map(device => {
-                    return renderIcon(device)
+                    return device.connected && renderIcon(device)
                 })}
             </div>
         </>

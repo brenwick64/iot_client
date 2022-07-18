@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import Menu from './components/Menu/Menu'
 import FloorPlan from './components/FloorPlan/FloorPlan'
+import MainPanel from './components/MainPanel/MainPanel'
 
 function App({ client }: any) {
 
   const [connected, setConnected] = useState<Boolean>(false)
   const [iotDevices, setIotDevices] = useState<Array<IotDevice>>([])
-  const [settings, setSettings] = useState<Settings>({ showLabels: true, showLights: true, showSensors: true, showPlants: true })
+  const [settings, setSettings] = useState<Settings>({ Labels: true, Lights: true, Sensors: true, Plants: true })
+  const [focusedDeviceKey, setFocusedDeviceKey] = useState<string>('')
 
   // Sends Child's command passed via child-to-parent props
   const commandHandler = (device: IotDevice, command: string) => {
@@ -54,7 +56,8 @@ function App({ client }: any) {
   return (
     <div className="App">
       <Menu settings={settings} updateSettings={updateSettings} />
-      <FloorPlan settings={settings} iotDevices={iotDevices} commandHandler={commandHandler} />
+      <FloorPlan settings={settings} iotDevices={iotDevices} commandHandler={commandHandler} setFocusedDeviceKey={setFocusedDeviceKey} />
+      <MainPanel focusedDeviceKey={focusedDeviceKey} iotDevices={iotDevices} commandHandler={commandHandler} />
     </div>
   );
 }

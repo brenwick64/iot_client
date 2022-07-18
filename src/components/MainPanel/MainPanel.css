@@ -1,0 +1,147 @@
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25vw;
+    height: 45rem;
+    padding: 2rem 2rem 3rem 2rem;
+    align-items: center;
+    background: linear-gradient(45deg, #171e28, #1e242f);
+    box-shadow: 10px 5px 15px black;
+    border-radius: 10px;
+}
+
+.icon {
+    color: var(--color-primary);
+}
+
+.icon-clickable {
+    cursor: pointer;
+}
+
+.icon-home {
+    position: absolute;
+    z-index: 99;
+    top: 2rem;
+    left: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .side-panel {
+        width: 32vw;
+    }
+
+    .main-container {
+        font-size: 1rem;
+    }
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-text {
+    font-size: 2.4rem;
+    color: var(--color-primary);
+}
+
+.title-subtext {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+.title-subtext-reactive {
+    color: #fff;
+    font-weight: 600;
+}
+
+.main-status-container {
+    padding: 2rem;
+    width: 60%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(45deg, #3c4551, #535c69);
+    box-shadow: 5px 2px 10px black;
+}
+
+.status-container {
+    padding: 2rem;
+    width: 60%;
+    height: 30%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #3c4551, #535c69);
+    box-shadow: 5px 2px 10px black;
+}
+
+.status-text {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+}
+
+.status-text-reactive {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.activity-log {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.activity-log-title {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.activity-log-entry {
+    color: #fff;
+    margin: 0.2rem;
+}
+
+.entry-0 {
+    font-size: 1.2rem;
+}
+
+.entry-1 {
+    font-size: 1.05rem;
+}
+
+.entry-2 {
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 1500px) {
+    .title-text {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .title-text {
+        font-size: 1.4rem;
+    }
+
+    .status-container {
+        padding: 1rem 2rem;
+    }
+
+    .status-text {
+        font-size: 1.1rem;
+    }
+
+    .status-text-reactive {
+        font-size: 1.1rem;
+    }
+}

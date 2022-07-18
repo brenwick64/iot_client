@@ -8,8 +8,8 @@ interface IotDevice {
 }
 
 interface Settings {
-    showLabels: boolean
-    showLights: boolean
-    showSensors: boolean
-    showPlants: boolean
+    Labels: boolean
+    Lights: boolean
+    Sensors: boolean
+    Plants: boolean
 }

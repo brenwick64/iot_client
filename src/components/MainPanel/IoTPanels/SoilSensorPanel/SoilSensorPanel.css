@@ -1,0 +1,19 @@
+.soil-sensor {
+    cursor: pointer;
+}
+
+.wet {
+    color: blue;
+}
+
+.moist {
+    color: green;
+}
+
+.damp {
+    color: green;
+}
+
+.dry {
+    color: lightsalmon;
+}

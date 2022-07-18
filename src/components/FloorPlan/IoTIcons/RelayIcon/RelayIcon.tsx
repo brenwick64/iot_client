@@ -2,14 +2,14 @@ import './RelayIcon.css'
 import lightbulb from '../../../../images/bulb.svg'
 
 
-function RelayIcon({ IotDevice, settings, commandHandler }: IconProps) {
+function RelayIcon({ IotDevice, settings, commandHandler, setFocusedDeviceKey }: IconProps) {
 
     // Guard typechecking
     const status = typeof IotDevice.status === 'string' ? IotDevice.status : null
 
     return (
         <>
-            {settings['showLights'] &&
+            {settings['Lights'] &&
                 <div className="relay-icon" style={{ top: IotDevice.top, left: IotDevice.left }}>
                     <input
                         src={lightbulb}
@@ -17,9 +17,12 @@ function RelayIcon({ IotDevice, settings, commandHandler }: IconProps) {
                         type='image'
                         alt=''
                         value={IotDevice.name}
-                        onClick={() => { commandHandler(IotDevice, 'toggle') }}
+                        onClick={() => {
+                            setFocusedDeviceKey(IotDevice.name)
+                            commandHandler(IotDevice, 'toggle')
+                        }}
                     />
-                    {settings['showLabels'] && <p className='relay-label'>{IotDevice.name}</p>}
+                    {settings['Labels'] && <p className='relay-label'>{IotDevice.name}</p>}
                 </div>}
         </>
     )
